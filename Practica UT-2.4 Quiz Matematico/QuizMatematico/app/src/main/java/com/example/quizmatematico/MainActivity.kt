@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
 import android.widget.RadioButton
+import android.widget.Switch
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat
 class MainActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     private var anyoActual: Int = 0
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -29,6 +31,15 @@ class MainActivity : AppCompatActivity() {
         val textViewResultado = findViewById<TextView>(R.id.resultado)
         val radioButtonSi = findViewById<RadioButton>(R.id.radioButton)
         val radioButtonNo = findViewById<RadioButton>(R.id.radioButton2)
+        val switchButtonFondo = findViewById<Switch>(R.id.fondoAmarillo)
+        val layoutPrincipal = findViewById<android.view.View>(R.id.main)
+
+        switchButtonFondo.setOnCheckedChangeListener { switch, isChecked ->
+            layoutPrincipal.setBackgroundColor(
+                if (isChecked) Color.YELLOW
+                else Color.WHITE
+            )
+        }
 
         btnGenerar.setOnClickListener {
             anyoActual = (1900..2100).random()
@@ -50,10 +61,10 @@ class MainActivity : AppCompatActivity() {
             }
 
             if ((esBisiesto && usuarioDijoSi) || (!esBisiesto && usuarioDijoNo)){
-                textViewResultado.text = "¡Correcto! Es Bisiesto: $esBisiesto"
+                textViewResultado.text = "¡Correcto! Es Bisiesto"
                 textViewResultado.setTextColor(Color.GREEN)
             } else {
-                textViewResultado.text = "¡Fallaste! Es Bisiesto: $esBisiesto"
+                textViewResultado.text = "¡Fallaste! Es Bisiesto"
                 textViewResultado.setTextColor(Color.RED)
             }
         }

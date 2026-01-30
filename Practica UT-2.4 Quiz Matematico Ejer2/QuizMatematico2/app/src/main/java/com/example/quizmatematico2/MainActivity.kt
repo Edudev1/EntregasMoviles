@@ -14,6 +14,9 @@ import androidx.core.view.WindowInsetsCompat
 class MainActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     private var numeroRandom: Int = 0;
+
+    lateinit var btnGenerarNumero: Button
+
     @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val btnGenerarNumero = findViewById<Button>(R.id.botonGenerar)
+        btnGenerarNumero = findViewById<Button>(R.id.botonGenerar)
         val btnComprobarResultado = findViewById<Button>(R.id.botonComprobarResultado)
         val tvNumeroGenerado = findViewById<TextView>(R.id.numeroGenerado)
         val tvCompobarResultado = findViewById<TextView>(R.id.tvComprobarResultado)

@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvSaldoTexto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Saldo"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.151" />
 
     <com.google.android.material.button.MaterialButtonToggleGroup
-        android:id="@+id/toggleButton"
+        android:id="@+id/toggleButtonOpciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -29,6 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.19"
+        app:singleSelection="true"
         tools:ignore="MissingConstraints">
 
         <Button
@@ -59,7 +60,7 @@
         app:layout_constraintVertical_bias="0.15" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerOpciones"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,21 +71,36 @@
         app:layout_constraintVertical_bias="0.294" />
 
     <EditText
-        android:id="@+id/editTextNumber2"
+        android:id="@+id/etIntroducirNumero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Introduce un numero"
         android:inputType="number"
-        android:text="Haga su apuesta"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="269dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.396" />
 
     <Button
         android:id="@+id/btnLanzarDados"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#F44336"
         android:text="Lanzar los dados"
-        tools:layout_editor_absoluteX="153dp"
-        tools:layout_editor_absoluteY="348dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
+
+    <View
+        android:id="@+id/avisos"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="530dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

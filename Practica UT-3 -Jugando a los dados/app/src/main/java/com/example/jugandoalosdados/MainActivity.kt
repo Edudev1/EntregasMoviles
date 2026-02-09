@@ -1,6 +1,7 @@
 package com.example.jugandoalosdados
 
 import android.os.Bundle
+import android.service.autofill.Sanitizer
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -74,7 +75,7 @@ class MainActivity : AppCompatActivity() {
 
             // Validamos la apuesta
             val apuestaTexto = etIntoducirNumero.text.toString().trim()
-            val apuesta = apuestaTexto
+            val apuesta = apuestaTexto.toIntOrNull()
 
             if (apuesta == null){
                 Snackbar.make(avisos, "Introduce un numero entero valido", Snackbar.LENGTH_SHORT).show()
@@ -88,6 +89,40 @@ class MainActivity : AppCompatActivity() {
             if (apuesta > saldo) {
                 Snackbar.make(avisos, "No puedes a`postar mas que tu saldo", Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
+            }
+
+            val opcion = spinnerOpciones.selectedItem.toString()
+            if (opcion === null){
+                Snackbar.make(avisos, "Selecciona una opción de apuesta.", Snackbar.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            // TIRADA
+            val dado1 = (1..6).random()
+            val dado2 = (1..6).random()
+            val suma = dado1 + dado2
+
+            var gana = false
+
+            if (opcionJuego == "PARIMPAR"){
+                if (opcion == "PAR" && suma % 2 == 0) gana = true
+                if (opcion == "IMPAR" && suma % 2 != 0) gana = true
+            } else if (opcionJuego == "MAYORMENOR"){
+                if (opcion == "MAYOR QUE 7" && suma >= 7) gana = true
+                if (opcion == "MENOR QUE 7" && suma <= 7) gana = true
+            }
+
+            if (gana) {
+                saldo += apuesta
+                Snackbar.make(avisos, "Has ganado, Salió $dado1 y $dado2", Snackbar.LENGTH_SHORT).show()
+            } else {
+                saldo -= apuesta
+                Snackbar.make(avisos, "Has perdido, Salió $dado1 y $dado2", Snackbar.LENGTH_SHORT).show()
+            }
+
+            actulizarSaldo()
+
+            if (saldo == 0){
+                Snackbar.make(avisos, "No tienes saldo pichón", Snackbar.LENGTH_SHORT).show()
             }
         }
     }

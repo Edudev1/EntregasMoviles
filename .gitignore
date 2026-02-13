@@ -1,15 +1,60 @@
+# =====================
+
+# IntelliJ / JetBrains IDEs
+
+# =====================
+
+.idea/
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+*.iws
+out/
+.idea_modules/
+
+# =====================
+
+# Java
+
+# =====================
+
+*.class
+*.log
+*.ctxt
+*.jar
+*.war
+*.ear
+hs_err_pid*
+
+# Compiled directories
+
+target/
+build/
+
+# Maven
+
+.mvn/
+dependency-reduced-pom.xml
+
+# Gradle
+
+.gradle/
+
+# =====================
+
+# OS files
+
+# =====================
+
 .DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+Thumbs.db
+desktop.ini
+
+# =====================
+
+# VS Code (por si acaso)
+
+# =====================
+
+.vscode/
+
+# Android Studio
 local.properties

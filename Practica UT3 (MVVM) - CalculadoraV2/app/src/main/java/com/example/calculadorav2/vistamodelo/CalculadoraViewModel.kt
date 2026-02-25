@@ -7,14 +7,16 @@ import androidx.lifecycle.viewModelScope
 import com.example.calculadorav2.modelo.CalculadoraModelo
 import com.example.calculadorav2.modelo.EstadoCalculadora
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class CalculadoraViewModel : ViewModel() {
 
     private val modelo = CalculadoraModelo()
 
-    private val _estadoObservable = MutableLiveData<EstadoCalculadora>(modelo.estadoActual)
-    val estadoObservable: LiveData<EstadoCalculadora> = _estadoObservable
+    private val _estadoObservable = MutableStateFlow<EstadoCalculadora>(modelo.estadoActual)
+    val estadoObservable: StateFlow<EstadoCalculadora> = _estadoObservable
     private var miCorrutina: Job? = null
 
     private fun lanzarMiCorrutina(accion: suspend () -> EstadoCalculadora) {

@@ -7,9 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.activity.viewModels
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.calculadorav2.databinding.ActivityMainBinding
 import com.example.calculadorav2.vistamodelo.CalculadoraViewModel
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,13 +34,23 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        viewModel.estadoObservable.observe(this) {
+        /**viewModel.estadoObservable.observe(this) {
             binding.tvEntradaDatos.text = it.numero
             binding.tvRegistroDatos.text = it.acumulado
             if (it.estado.isNotBlank()) {Toast.makeText(this, it.estado,Toast.LENGTH_SHORT).show() }
 
             binding.tvEntradaDatos.text = it.numero
 
+        }**/
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.estadoObservable.collect {
+                    binding.tvEntradaDatos.text = it.numero
+                    binding.tvRegistroDatos.text = it.acumulado
+                    if (it.estado.isNotBlank()) {Toast.makeText(this@MainActivity, it.estado,Toast.LENGTH_SHORT).show()}
+                }
+            }
         }
 
         binding.btnNum0.setOnClickListener { viewModel.numero(0) }

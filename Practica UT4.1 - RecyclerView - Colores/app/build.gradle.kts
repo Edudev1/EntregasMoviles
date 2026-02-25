@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.calculadorav2"
+    namespace = "com.example.recyclerviewcolores"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.example.calculadorav2"
+        applicationId = "com.example.recyclerviewcolores"
         minSdk = 28
         targetSdk = 36
         versionCode = 1
@@ -49,9 +49,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
-    implementation("com.github.bumptech.glide:glide:4.16.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
-    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.10.0")
-
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
 }

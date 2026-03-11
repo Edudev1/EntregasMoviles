@@ -7,9 +7,23 @@ import com.bumptech.glide.Glide
 import com.example.recyclerviewapidog.R
 import com.example.recyclerviewapidog.model.DogRespuesta
 
-class MiAdaptador(private var misFotos: DogRespuesta) : RecyclerView.Adapter<MiVista>(){
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MiVista {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.row_perro, parent, false)
+class MiAdaptador(
+    private var misFotos: DogRespuesta
+) : RecyclerView.Adapter<MiVista>() {
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): MiVista {
+
+        val view = LayoutInflater
+            .from(parent.context)
+            .inflate(
+                R.layout.row_perro,
+                parent,
+                false
+            )
+
         return MiVista(view)
     }
 
@@ -17,14 +31,15 @@ class MiAdaptador(private var misFotos: DogRespuesta) : RecyclerView.Adapter<MiV
         holder: MiVista,
         position: Int
     ) {
+
         val urlFoto = misFotos.message?.get(position)
 
-        Glide.with(holder.itemView.context).load(urlFoto).into(holder.ivPerro)
+        Glide.with(holder.itemView.context)
+            .load(urlFoto)
+            .into(holder.ivPerro)
     }
 
     override fun getItemCount(): Int {
         return misFotos.message?.size ?: 0
     }
-
-
 }

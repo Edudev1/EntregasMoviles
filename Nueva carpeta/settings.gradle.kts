@@ -21,5 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "FragmentosYNavegacion"
 include(":app")
-include(":app")
  

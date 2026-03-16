@@ -35,6 +35,9 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -46,4 +49,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.10.0")
+    implementation("androidx.fragment:fragment:1.8.9")
 }

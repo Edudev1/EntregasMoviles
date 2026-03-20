@@ -28,8 +28,7 @@ class fragmentoDivisible : Fragment() {
     private var texto: String? = null
     private var num: Int? = null
 
-    private lateinit var viewModel: MainViewModel
-
+    private val viewModel: MainViewModel by viewModels()
     private lateinit var cb2: CheckBox
     private lateinit var cb3: CheckBox
     private lateinit var cb5: CheckBox
@@ -56,7 +55,6 @@ class fragmentoDivisible : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
 
         cb2 = view.findViewById(R.id.cb2)
         cb3 = view.findViewById(R.id.cb3)

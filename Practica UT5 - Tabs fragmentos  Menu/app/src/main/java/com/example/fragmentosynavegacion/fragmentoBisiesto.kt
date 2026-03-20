@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.fragmentosynavegacion.viewmodel.MainViewModel
 import kotlin.properties.ReadOnlyProperty
+import androidx.fragment.app.viewModels
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,7 +31,6 @@ class fragmentoBisiesto : Fragment() {
     private var num: Int? = null
 
     private val viewModel: MainViewModel by viewModels()
-
     private lateinit var rbSi: RadioButton
     private lateinit var rbNo: RadioButton
     private lateinit var btnValidar: Button
@@ -55,7 +55,6 @@ class fragmentoBisiesto : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
 
         rbSi = view.findViewById(R.id.rbSi)
         rbNo = view.findViewById(R.id.rbNo)

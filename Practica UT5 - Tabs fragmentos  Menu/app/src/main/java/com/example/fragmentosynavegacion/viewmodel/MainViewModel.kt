@@ -27,6 +27,9 @@ class MainViewModel : ViewModel(){
     fun validarBisiesto(opcion: String){
         val actual = _datos.value ?: return
         val resultado = model.validarBisiesto(actual.numGenerado, opcion)
+
+        actual.estado = resultado
+        _datos.value = actual
     }
 
     fun validarDivisible(opciones: MutableList<String>){

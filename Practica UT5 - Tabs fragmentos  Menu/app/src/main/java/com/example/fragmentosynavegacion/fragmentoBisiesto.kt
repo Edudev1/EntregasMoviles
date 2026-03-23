@@ -7,11 +7,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.TextView
-import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.example.fragmentosynavegacion.viewmodel.MainViewModel
-import kotlin.properties.ReadOnlyProperty
 import androidx.fragment.app.viewModels
 
 // TODO: Rename parameter arguments, choose names that match
@@ -30,7 +27,7 @@ class fragmentoBisiesto : Fragment() {
     private var texto: String? = null
     private var num: Int? = null
 
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels({requireActivity()})
     private lateinit var rbSi: RadioButton
     private lateinit var rbNo: RadioButton
     private lateinit var btnValidar: Button

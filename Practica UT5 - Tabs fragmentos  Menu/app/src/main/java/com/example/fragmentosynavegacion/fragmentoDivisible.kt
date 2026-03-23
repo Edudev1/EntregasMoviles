@@ -28,7 +28,7 @@ class fragmentoDivisible : Fragment() {
     private var texto: String? = null
     private var num: Int? = null
 
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels({requireActivity()})
     private lateinit var cb2: CheckBox
     private lateinit var cb3: CheckBox
     private lateinit var cb5: CheckBox

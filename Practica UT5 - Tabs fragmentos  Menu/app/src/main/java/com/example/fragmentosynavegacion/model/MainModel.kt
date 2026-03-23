@@ -25,6 +25,7 @@ class MainModel {
         if (num % 5 == 0) correctas.add("5")
         if (num % 10 == 0) correctas.add("10")
 
+
         if (correctas.isEmpty()) {
             correctas.add("ninguno")
         }
